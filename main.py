@@ -14,8 +14,7 @@ def load_sales(filename: str) -> list:
     """
 
     if not os.path.exists(filename):
-        # This should raise a ValueError, but the assessment requires
-        # this approach, so ignore the (rightful) type checker complaints.
+        # Don't throw python errors at the user, handle errors safely.
         print('Sales data file path does not exist.')
         return
 
@@ -30,11 +29,14 @@ def load_sales(filename: str) -> list:
 
             for i in range(len(csv_keys)):
                 # Convert the data into integers if possible.
+                # TODO: Price to float.
+                # TODO: Error handling when malformed data
                 entry_data = int(split_sales_data[i]) if split_sales_data[i].isdecimal() else split_sales_data[i]
 
                 car_sales_cache_dict[csv_keys[i]] = entry_data # Add the data to the cache dictionary
 
-            car_sales.append(car_sales_cache_dict) # Add the cache dictionary to the car sales list.
+            car_sales.append(car_sales_cache_dict)  # Add the cache dictionary to the car sales list.
+
 
         return car_sales
 
