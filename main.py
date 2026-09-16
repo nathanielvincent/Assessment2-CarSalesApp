@@ -30,7 +30,7 @@ def total_sales(sales: list) -> int:
     """
     return len(sales)
 
-def total_revenue(sales: list) -> float:
+def total_revenue(sales: list) -> str:
     """
     Returns the total revenue from sales.
 
@@ -38,8 +38,17 @@ def total_revenue(sales: list) -> float:
     :return: Float of total revenue count.
     """
 
+    revenue_total = 0
     for item in sales:
-        print(item)
+        try:
+            price = item['price']
+            revenue_total += price
+
+        except:
+            continue
+
+    return f"${revenue_total:.2f}"
+
 
 def load_sales(filename: str) -> list:
     """
