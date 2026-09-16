@@ -47,7 +47,7 @@ def total_revenue(sales: list) -> str:
         except:
             continue
 
-    return f"${revenue_total:.2f}"
+    return f"${revenue_total:.2f}"  # TODO: am I returning a float or a formatted dollar amount?
 
 
 def load_sales(filename: str) -> list:
@@ -87,5 +87,8 @@ def load_sales(filename: str) -> list:
 if __name__ == '__main__':
     sale_data = load_sales('./car_sales.csv')
 
+    sales_count = total_sales(sale_data)
     revenue = total_revenue(sale_data)
-    print(revenue)
+
+    print(f"Total Sales     : {sales_count}")
+    print(f"Total Revenue   : {revenue}")
