@@ -21,6 +21,8 @@ def parse_value(value):
     except ValueError:
         return value
 
+
+# ANALYTICS FUNCTIONS --------------------------------------------------------
 def total_sales(sales: list) -> int:
     """
     Returns the total count of sales from the provided data.
@@ -30,7 +32,7 @@ def total_sales(sales: list) -> int:
     """
     return len(sales)
 
-def total_revenue(sales: list) -> str:
+def total_revenue(sales: list) -> float:
     """
     Returns the total revenue from sales.
 
@@ -44,12 +46,23 @@ def total_revenue(sales: list) -> str:
             price = item['price']
             revenue_total += price
 
-        except:
+        except: # Malformed entry, ignore, move on.
             continue
 
-    return f"${revenue_total:.2f}"  # TODO: am I returning a float or a formatted dollar amount?
+    return float(revenue_total)
 
 
+def sales_by_salesperson(sales: list) -> dict:
+    """
+
+    :param sales:
+    :return:
+    """
+
+    for i in sales:
+        print(i)
+
+# LOADING DATA --------------------------------------------------------
 def load_sales(filename: str) -> list:
     """
     Loads all sales information from the provided file path and returns a list
@@ -86,6 +99,7 @@ def load_sales(filename: str) -> list:
 
 if __name__ == '__main__':
     sale_data = load_sales('./car_sales.csv')
+    sales_by_salesperson(sale_data)
 
     sales_count = total_sales(sale_data)
     revenue = total_revenue(sale_data)
