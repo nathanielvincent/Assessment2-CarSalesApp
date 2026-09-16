@@ -54,13 +54,28 @@ def total_revenue(sales: list) -> float:
 
 def sales_by_salesperson(sales: list) -> dict:
     """
+    Generates a dictionary of sales person sales stats
 
-    :param sales:
-    :return:
+    :param sales: List data gathered from `load_sales`.
+    :return: a dictionary of all salespeople and how many sales they have made.
     """
 
-    for i in sales:
-        print(i)
+    sales_person_stats = {}
+    for sale in sales:
+        try:
+            sales_person = sale['salesperson']
+
+            # Add salesperson to dictionary if they don't exist
+            if sales_person not in sales_person_stats:
+                sales_person_stats[sales_person] = 1
+                continue
+
+            sales_person_stats[sales_person] += 1
+
+        except: # Malformed entry, ignore, move on.
+            continue
+
+    return sales_person_stats
 
 # LOADING DATA --------------------------------------------------------
 def load_sales(filename: str) -> list:
