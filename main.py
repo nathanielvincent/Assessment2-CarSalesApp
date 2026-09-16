@@ -1,13 +1,33 @@
 # Nathaniel Vincent
 # nav0135@arastudent.ac.nz
+# A program to read car sale data from a .csv
 
-def load_sales(filename: str) -> list: # It should honestly probably be a pathlib object but eh
+def load_sales(filename: str) -> list:
+    """
+    Loads all sales information from the provided file path and returns a list
+    with formatted data entries using respective key headers.
+
+    :param filename: the path to the sales data csv.
+    :return: a list of dictionaries with sales data.
+    """
     with open(filename, 'r') as file:
-        for index, line in enumerate(file.read()):
-            if index == 0:
-                
+        lines       = file.readlines()
+        csv_keys    = lines[0].strip().split(",") # Build the CSV header keys
+        car_sales   = []
 
+        for line in lines[1:]:
+            car_sales_cache_dict = {} # Set the cache dict here so it gets reset with every run of the loop.
+            split_sales_data     = line.strip().split(",") # Split the keys from the line.
 
+            for i in range(len(csv_keys)):
+                # Convert the data into integers if possible.
+                entry_data = int(split_sales_data[i]) if split_sales_data[i].isdecimal() else split_sales_data[i]
+
+                car_sales_cache_dict[csv_keys[i]] = entry_data # Add the data to the cache dictionary
+
+            car_sales.append(car_sales_cache_dict) # Add the cache dictionary to the car sales list.
+        return car_sales
 
 if __name__ == '__main__':
-    load_sales('./car_sales.csv')
+    data = load_sales('./car_sales.csv')
+    print(data)
