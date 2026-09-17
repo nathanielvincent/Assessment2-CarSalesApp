@@ -5,6 +5,7 @@
 from analytics import *
 from analytics_grabber import load_sales
 import uuid
+from constants import *
 
 def write_report(sales: list, filename: str) -> None:
     """
@@ -56,6 +57,6 @@ def write_report(sales: list, filename: str) -> None:
 if __name__ == "__main__":
     # Custom ID for every report, don't overwrite old ones.
     report_path = f"./report_{uuid.uuid4()}.txt"
-    sale_data = load_sales('./car_sales.csv')
+    sale_data = load_sales(WORKING_DATA_FILE)
 
     write_report(sale_data, report_path)

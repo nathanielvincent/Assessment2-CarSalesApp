@@ -5,6 +5,7 @@
 
 from analytics import *
 import os
+from constants import *
 
 def parse_value(value):
     """
@@ -66,7 +67,7 @@ def grab_analytics(run_option: str) -> None:
     :param run_option: which sales data to read.
     :return:
     """
-    sale_data = load_sales('./car_sales.csv')
+    sale_data = load_sales(WORKING_DATA_FILE)
 
     if run_option == 'Total Sales':
         total_sale_count = total_sales(sale_data)

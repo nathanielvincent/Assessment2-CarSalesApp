@@ -3,6 +3,12 @@
 # Constant variables that multiple files depend on, so they're here instead
 # of being duplicated multiple times through the source.
 
+
+# This is the file that will be utilised by the code for all functions.
+# If you wish to change the file it reads, change this, and everything will use it.
+WORKING_DATA_FILE = './car_sales.csv'
+
+
 # Options that will appear on startup for the interaction menu in main.py.
 # This is also used for analytics_grabber.py to know what code to run.
 MENU_OPTIONS_LIST = [
