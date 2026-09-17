@@ -17,7 +17,8 @@ TEST_DATA = [
     {'sale_id': 10003, 'date': '2026-12-31', 'salesperson': 'Ben', 'make': 'Honda', 'model': 'Civic', 'year': 2006, 'price': 12000.0},
     {'sale_id': 10004, 'date': '2026-01-30', 'salesperson': 'Joe', 'make': 'Volkswagen', 'model': 'Polo', 'year': 1980, 'price': 8000.0},
 
-    # Both entries below are malformed and should be ignored by all analytics code.
+    # Both entries below are malformed and should be ignored by all analytics code,
+    # these are the primary boundary test functions.
     {'sale_id': 10005, 'date': None        , 'salesperson': 'Joe', 'make': 'Ford', 'model': 'f150', 'year': 2026, 'price': 70000.0},
     {}
 ]
