@@ -9,12 +9,9 @@
    - `python main.py` (Possibly `python3 main.py` depending on your installation!)
 
 ## How To Run Test Cases:
-Boilerplate so I can get back to this later.
-
-| Example | Blank for now | Blank for now (2 - electric boogaloo) |
-|---------|---------------|---------------------------------------|
-| h       | h             | h                                     |
-| h       | h             | h                                     |
+Automated testing can be completed by following these steps;
+1. Complete the steps from `How To Run The Program` above **first**.
+2. In the same working directory as `automated_tests.py`, run `pytest automated_tests.py`
 
 ## How Manual Testing Was Done:
 Manual testing was completed as development went on, 
