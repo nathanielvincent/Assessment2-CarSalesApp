@@ -98,5 +98,10 @@ def grab_analytics(run_option: str) -> None:
             sales_average = average_sale_amount[salesperson]
             print(f"{salesperson} - Average of ${sales_average:.2f} per sale.")
 
+
+    elif run_option == 'top_salesperson_by_average':
+        top_salesperson = top_salesperson_by_average(sale_data)
+        print(f"{top_salesperson} has the highest sale average.")
+
     # Don't continue until the user is ready
     input("\n[Press enter to continue]")
