@@ -4,7 +4,6 @@
 # by main.py for the terminal interface people interact with
 
 from analytics import *
-import os
 from constants import *
 
 def parse_value(value):
