@@ -88,3 +88,7 @@ def test_sales_in_month_two():
     # There are no sales in 2025 at all, so it should return nothing.
     expected_result = []
     assert sales_in_month(TEST_DATA, "2025", "06") == expected_result
+
+def test_best_month():
+    # Best month should be 2026 June (2026-06), as it has the most profitable sales numbers
+    assert best_month(TEST_DATA) == "2026-06"
