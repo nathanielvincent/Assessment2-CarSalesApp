@@ -1,3 +1,5 @@
 /.venv
-uv.lock
 .idea
+
+uv.lock
+pyproject.toml
