@@ -58,10 +58,14 @@ def load_sales(filename: str) -> list:
 
 if __name__ == '__main__':
     sale_data = load_sales('./car_sales.csv')
-    most_sold_make(sale_data)
 
+    least_sold  = least_sold_model(sale_data)
+    most_sold   = most_sold_make(sale_data)
     sales_count = total_sales(sale_data)
-    revenue = total_revenue(sale_data)
+    revenue     = total_revenue(sale_data)
 
+    print(least_sold)
+
+    print(f"Most Sold Make  : {most_sold}")
     print(f"Total Sales     : {sales_count}")
     print(f"Total Revenue   : {revenue}")
