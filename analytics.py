@@ -289,3 +289,34 @@ def sales_in_month(sales: list, year: int | str, month: int | str) -> list:
                 sales_made.append(sale)
 
     return sales_made
+
+def best_month(sales: list) -> str:
+    """
+    This function will scan all of the provided sales, and find the best performing month within them.
+
+    :param sales: List data gathered from `load_sales`.
+    :return: A list, ['YYYY', 'MM']. e.g. ['2026', '05'].
+    """
+
+    date_profits = {}
+    for sale in sales:
+        # Build a date string with the year and month
+        split_date = sale['date'].split('-')
+        date_string = f"{split_date[0]}-{split_date[1]}"
+
+        # Add year-month string to dict if it doesn't exist
+        if date_string not in date_profits:
+            date_profits[date_string] = sale['price']
+            continue
+
+        # Add sale price to the tally if the year-month string already in dict.
+        date_profits[date_string] += sale['price']
+
+    most_profitable_month           = ""
+    most_profitable_month_amount    = 0
+    for date in date_profits:
+        if date_profits[date] > most_profitable_month_amount:
+            most_profitable_month = date
+            most_profitable_month_amount = date_profits[date]
+
+    return str(most_profitable_month)

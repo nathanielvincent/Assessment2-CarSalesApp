@@ -137,7 +137,8 @@ def grab_analytics(run_option: str) -> None:
             print("\n!! One or more input is incorrect, please try again !!")
 
     elif run_option == 'Best Month':
-        print('I will get back to this')
+        best_month_data = best_month(sale_data)
+        print(best_month_data)
 
     # Don't continue until the user is ready
     input("\n[Press enter to continue]")
