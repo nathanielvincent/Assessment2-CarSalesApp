@@ -264,7 +264,7 @@ def top_salesperson_by_average(sales: list) -> str:
     return top_salesperson
 
 
-def sales_in_month(sales: list, year: int | str, month: int | str) -> list:
+def sales_in_month(sales: list, year: str, month: str) -> list:
     """
     Fetches a list of all sales in a specified year and month, then returns them.
 
