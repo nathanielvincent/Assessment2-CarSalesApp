@@ -138,7 +138,7 @@ def grab_analytics(run_option: str) -> None:
 
     elif run_option == 'Best Month':
         best_month_data = best_month(sale_data)
-        print(best_month_data)
+        print(f"The most profitable month in the dataset is {best_month_data}.")
 
     # Don't continue until the user is ready
     input("\n[Press enter to continue]")
