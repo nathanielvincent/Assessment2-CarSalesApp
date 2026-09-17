@@ -29,7 +29,7 @@ def test_total_sales():
     assert total_sales(TEST_DATA) == 5
 
 def test_total_revenue():
-    # Sum of all *VALID* test data sales is 106,000. Data is returned from the function without
+    # Sum of all *VALID* test data sales is 106,000. data is returned from the function without
     # commas, and with two decimal places, thus it should return `106000.00`
     assert total_revenue(TEST_DATA) == 106000.00
 

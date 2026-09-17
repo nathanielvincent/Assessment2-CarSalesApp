@@ -9,7 +9,7 @@ from pathlib import Path
 # This is the file that will be utilised by the code for all functions.
 # If you wish to change the file it reads, change this, and everything will use it.
 WORKING_DIR = Path(__file__).resolve().parent
-WORKING_DATA_FILE = WORKING_DIR / 'Data' / 'car_sales.csv'
+WORKING_DATA_FILE = WORKING_DIR / 'data' / 'car_sales.csv'
 
 # Options that will appear on startup for the interaction menu in main.py.
 # This is also used for analytics_grabber.py to know what code to run.
