@@ -71,6 +71,13 @@ def grab_analytics(run_option: str) -> None:
         total_revenue_amount = total_revenue(sale_data)
         print(f"The total amount of revenue made from car sales is ${total_revenue_amount:.2f}.")
 
+    elif run_option == 'sales_by_salesperson':
+        sales_by_salesperson_data = sales_by_salesperson(sale_data)
+
+        print("Sales Person Sales Statistics!")
+        for salesperson in sales_by_salesperson_data:
+            sales_count = sales_by_salesperson_data[salesperson]
+            print(f"{salesperson} - {sales_count} sales!")
 
     # Don't continue until the user is ready
     input("\n[Press enter to continue]")
