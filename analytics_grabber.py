@@ -67,9 +67,11 @@ def grab_analytics(run_option: str) -> None:
         total_sale_count = total_sales(sale_data)
         print(f"There have been a total of {total_sale_count} sales.")
 
+
     elif run_option == 'total_revenue':
         total_revenue_amount = total_revenue(sale_data)
         print(f"The total amount of revenue made from car sales is ${total_revenue_amount:.2f}.")
+
 
     elif run_option == 'sales_by_salesperson':
         sales_by_salesperson_data = sales_by_salesperson(sale_data)
@@ -79,13 +81,22 @@ def grab_analytics(run_option: str) -> None:
             sales_count = sales_by_salesperson_data[salesperson]
             print(f"{salesperson} - {sales_count} sales.")
 
+
     elif run_option == 'most_sold_make':
         most_sold_make_data = most_sold_make(sale_data)
         print(f"The most sold car make is {most_sold_make_data}.")
 
+
     elif run_option == 'least_sold_model':
         least_sold_model_data = least_sold_model(sale_data)
         print(f"The least sold car make and model is {least_sold_model_data}.")
+
+
+    elif run_option == 'average_sale_by_salesperson':
+        average_sale_amount = average_sale_by_salesperson(sale_data)
+        for salesperson in average_sale_amount:
+            sales_average = average_sale_amount[salesperson]
+            print(f"{salesperson} - Average of ${sales_average:.2f} per sale.")
 
     # Don't continue until the user is ready
     input("\n[Press enter to continue]")

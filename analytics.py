@@ -125,3 +125,71 @@ def least_sold_model(sales: list) -> str:
             lowest_sold_model = car_model
 
     return lowest_sold_model
+
+def fetch_salesperson_data(sales: list) -> dict:
+    """
+    Takes the provided sales data and generates the amount of sales each salesperson has made,
+    and the total value of all of those sales.
+
+    :param sales: List data gathered from `load_sales`.
+    :return: a dictionary of salespeople, their total sale count, and total sale value.
+    """
+
+    sales_person_data = {}
+    for sale in sales:
+        salesperson = sale['salesperson']
+        sale_value = sale['price']
+
+        # Add the sales person to the dictionary if they're not in it already.
+        if salesperson not in sales_person_data:
+            sales_person_data[salesperson] = {'total_sale_value': sale_value, 'total_sale_count': 1}
+            continue
+
+        # Add the data to the sales persons stats if they're already in the dictionary.
+        sales_person_data[salesperson]['total_sale_count'] += 1
+        sales_person_data[salesperson]['total_sale_value'] += sale_value
+
+    return sales_person_data
+
+def average_sale_by_salesperson(sales: list) -> dict:
+    """
+    Fetches the average sale amount of every salesperson in the provided data.
+
+    :param sales: List data gathered from `load_sales`.
+    :return: a dictionary keyed with each salesperson name and their average sale amount.
+    """
+
+    # I'm too lazy to check the code against an empty list.
+    # enjoy this dedicated check.
+    if len(sales) == 0:
+        return {}
+
+    sales_person_data = fetch_salesperson_data(sales)
+    averaged_sales_person_data = {}
+
+    # Generate the average sales count for every sales person and add it to a dictionary
+    for sales_person in sales_person_data:
+        sales_person_name        = sales_person
+        sales_person_total_value = sales_person_data[sales_person]['total_sale_value']
+        sales_person_total_sales = sales_person_data[sales_person]['total_sale_count']
+
+        average_value = round(sales_person_total_value / sales_person_total_sales, 2)
+
+        averaged_sales_person_data[sales_person_name] = average_value
+
+    return averaged_sales_person_data
+
+def top_salesperson_by_average(sales: list) -> str:
+    """
+    Takes sales data and finds the salesperson with the highest average sale price.
+
+    :param sales: List data gathered from `load_sales`.
+    :return: the salesperson name as a plain string.
+    """
+
+    # I'm too lazy to check the code against an empty list.
+    # enjoy this dedicated check.
+    if len(sales) == 0:
+        return {}
+
+    sales_person_data = fetch_salesperson_data(sales)
