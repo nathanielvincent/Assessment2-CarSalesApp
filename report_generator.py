@@ -4,8 +4,11 @@
 
 from analytics import *
 from analytics_grabber import load_sales
-import uuid
+
 from constants import *
+
+import uuid
+from pathlib import Path
 
 def write_report(sales: list, filename: str) -> None:
     """
