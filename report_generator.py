@@ -26,12 +26,23 @@ def write_report(sales: list, filename: str) -> None:
         file.write(f'Total car sales in the dataset       - {total_sales_amount}\n')
         file.write(f'Total Revenue from all sales         - ${total_revenue_amount:.2f}\n\n')
         file.write(f'The overall most sold vehicle make   - {most_sold_car_make}.\n')
-        file.write(f'The overall least sold vehicle model - {least_sold_car_model}.\n\n')
+        file.write(f'The overall least sold vehicle model - {least_sold_car_model}.\n\n\n')
 
         file.write(f'SALES PEOPLE STATS:\n')
-        file.write(f'{sales_per_salesperson}\n\n')
-        file.write(f'{average_salesperson_sales}\n')
-        file.write(f'The top sales person based on average sales price is {top_salesperson_average}.\n')
+        file.write(f'The top sales person based on average sales price is {top_salesperson_average}.\n\n\n')
+
+        file.write('Sales Person Total Sales Amount\n')
+        file.write(f"{'Name':<10}{'Total Sales':>15}\n")
+        file.write('-' * 30 + '\n') # Add a gap
+        for name, value in sales_per_salesperson.items():
+            file.write(f"{name:<10}{value:>10}\n")
+
+        file.write('\n\n\nSales Person Average Sale Amount\n') # Put a small gap between tables
+        file.write(f"{'Name':<10}{'Average Sale Amount':>15}\n")
+        file.write('-' * 30 + '\n') # Add a gap
+        for name, value in average_salesperson_sales.items():
+            sales_value = f"${value:.2f}" # Convert to dollars
+            file.write(f"{name:<10}{sales_value:>15}\n")
 
     print(f"Report successfully written to {report_path}!")
 
