@@ -5,12 +5,20 @@
 import pytest
 from analytics import *
 
+# Test data includes 5 full sales to compare and 2 additional borked boundary test cases.
+# Boundary Cases:
+# - `sale_id 10002` and `sale_id 10003` both sell the same vehicle for the same price. Testing how functionality works in this instance.
+# - `sale_id 10005` has no provided date, this is a boundary test case.
 TEST_DATA = [
     {'sale_id': 10000, 'date': '2026-06-11', 'salesperson': 'Ben', 'make': 'Tesla', 'model': 'Model 3', 'year': 2024, 'price': 58000.0},
     {'sale_id': 10001, 'date': '2026-10-05', 'salesperson': 'Emily', 'make': 'Subaru', 'model': 'i-dont-know-cars', 'year': 1903, 'price': 16000.0},
     {'sale_id': 10002, 'date': '2026-06-21', 'salesperson': 'Mark', 'make': 'Honda', 'model': 'Civic', 'year': 2006, 'price': 12000.0},
     {'sale_id': 10003, 'date': '2026-12-31', 'salesperson': 'Ben', 'make': 'Honda', 'model': 'Civic', 'year': 2006, 'price': 12000.0},
-    {'sale_id': 10004, 'date': '2026-01-30', 'salesperson': 'Joe', 'make': 'Volkswagen', 'model': 'Polo', 'year': 1980, 'price': 8000.0}
+    {'sale_id': 10004, 'date': '2026-01-30', 'salesperson': 'Joe', 'make': 'Volkswagen', 'model': 'Polo', 'year': 1980, 'price': 8000.0},
+
+    # Both entries below are malformed and should be ignored by all analytics code.
+    {'sale_id': 10005, 'date': None        , 'salesperson': 'Joe', 'make': 'Ford', 'model': 'f150', 'year': 2026, 'price': 70000.0},
+    {'sale_id': 10005, 'date': '2026-09-12', 'salesperson': None, 'make': 'Generic', 'model': 'Car', 'year': 2026, 'price': 29000.0}
 ]
 
 def test_total_sales():
