@@ -33,14 +33,14 @@ def write_report(sales: list, filename: str) -> None:
         file.write(f'SALES PEOPLE STATS:\n')
         file.write(f'The top sales person based on average sales price is {top_salesperson_average}.\n\n\n')
 
-        file.write('Sales Person Total Sales Amount\n')
+        file.write('Total Sales Amount Per Sales Person\n\n')
         file.write(f"{'Name':<10}{'Total Sales':>15}\n")
         file.write('-' * 30 + '\n') # Add a gap
         for name, value in sales_per_salesperson.items():
             file.write(f"{name:<10}{value:>10}\n")
 
         # Average sale amount ---------------------------
-        file.write('\n\n\nSales Person Average Sale Amount\n') # Put a small gap between tables
+        file.write('\n\n\nAverage Sales Amount Per Sales Person\n\n') # Put a small gap between tables
         file.write(f"{'Name':<10}{'Average Sale Amount':>15}\n")
         file.write('-' * 30 + '\n') # Add a gap
         for name, value in average_salesperson_sales.items():
