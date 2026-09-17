@@ -56,15 +56,43 @@ def load_sales(filename: str) -> list:
 
         return car_sales
 
-if __name__ == '__main__':
+def sales_interaction_menu() -> None:
     sale_data = load_sales('./car_sales.csv')
 
-    least_sold  = least_sold_model(sale_data)
-    most_sold   = most_sold_make(sale_data)
-    sales_count = total_sales(sale_data)
-    revenue     = total_revenue(sale_data)
+    menu_options = {
+        "sales_count": [total_sales, sale_data],
+        "least_sold_model": [least_sold_model, sale_data]
+    }
+    option_index_match = {}
 
-    print(f"Least Sold Model: {least_sold}")
-    print(f"Most Sold Make  : {most_sold}")
-    print(f"Total Sales     : {sales_count}")
-    print(f"Total Revenue   : {revenue}")
+    selected_option = ""
+    while selected_option != 'quit':
+        for index, option in enumerate(menu_options, start=1):
+            print(f"{index}. {option}")
+            option_index_match[str(index)] = option
+
+        selected_option = input("\nWhich option would you like to view? (Use the numbers, type `quit` to quit.) ").lower().strip()
+        print(selected_option)
+        print(option_index_match)
+        if selected_option in option_index_match:
+            run_function = option_index_match[selected_option]
+            print(run_function)
+            data = menu_options[run_function][0][1]
+
+            print(data)
+
+
+if __name__ == '__main__':
+    sales_interaction_menu()
+
+    # sale_data = load_sales('./car_sales.csv')
+    #
+    # least_sold  = least_sold_model(sale_data)
+    # most_sold   = most_sold_make(sale_data)
+    # sales_count = total_sales(sale_data)
+    # revenue     = total_revenue(sale_data)
+    #
+    # print(f"Least Sold Model: {least_sold}")
+    # print(f"Most Sold Make  : {most_sold}")
+    # print(f"Total Sales     : {sales_count}")
+    # print(f"Total Revenue   : {revenue}")
