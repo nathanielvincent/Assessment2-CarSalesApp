@@ -7,5 +7,6 @@ MENU_OPTIONS = {
     "Least Sold Model": "least_sold_model",
     "Average Sale by Salesperson": "average_sale_by_salesperson",
     "Top Salesperson by Average": "top_salesperson_by_average",
+    "Sales in Month": "sales_in_month",
     "Quit": "quit"
 }

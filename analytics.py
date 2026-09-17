@@ -7,6 +7,7 @@ def total_sales(sales: list) -> int:
     """
     return len(sales)
 
+
 def total_revenue(sales: list) -> float:
     """
     Returns the total revenue from sales.
@@ -51,6 +52,7 @@ def sales_by_salesperson(sales: list) -> dict:
             continue
 
     return sales_person_stats
+
 
 def most_sold_make(sales: list) -> str:
     """
@@ -126,6 +128,7 @@ def least_sold_model(sales: list) -> str:
 
     return lowest_sold_model
 
+
 def fetch_salesperson_data(sales: list) -> dict:
     """
     Takes the provided sales data and generates the amount of sales each salesperson has made,
@@ -151,6 +154,7 @@ def fetch_salesperson_data(sales: list) -> dict:
 
     return sales_person_data
 
+
 def average_salesperson_data(sales_person_data: dict) -> dict:
     """
     Generates the average of every salespersons sales as is gathered from `fetch_salesperson_data`.
@@ -172,6 +176,7 @@ def average_salesperson_data(sales_person_data: dict) -> dict:
 
     return averaged_sales_person_data
 
+
 def average_sale_by_salesperson(sales: list) -> dict:
     """
     Fetches the average sale amount of every salesperson in the provided data.
@@ -189,6 +194,7 @@ def average_sale_by_salesperson(sales: list) -> dict:
     averaged_sales_person_data = average_salesperson_data(sales_person_data)
 
     return averaged_sales_person_data
+
 
 def top_salesperson_by_average(sales: list) -> str:
     """
@@ -215,3 +221,28 @@ def top_salesperson_by_average(sales: list) -> str:
             top_salesperson_amount = averaged_sales_person_data[sales_person]
 
     return top_salesperson
+
+
+def sales_in_month(sales: list, year: int | str, month: int | str) -> list:
+    """
+    Fetches a list of all sales in a specified year and month, then returns them.
+
+    :param sales: List data gathered from `load_sales`.
+    :param year: The year (e.g. 2026) to fetch the data from.
+    :param month: The month (number, e.g. 5 for May) to fetch the data from.
+    :return: A list of all sales made in that month.
+    """
+
+    # I'm too lazy to check the code against an empty list.
+    # enjoy this dedicated check.
+    if len(sales) == 0:
+        return []
+
+    sales_date  = f"{year}-{month}"
+    sales_made  = []
+
+    for sale in sales:
+        if sales_date in sale['date']:
+            sales_made.append(sale)
+
+    return sales_made

@@ -103,5 +103,28 @@ def grab_analytics(run_option: str) -> None:
         top_salesperson = top_salesperson_by_average(sale_data)
         print(f"{top_salesperson} has the highest sale average.")
 
+    elif run_option == 'sales_in_month':
+        year  = input("Which year would you like to check? ")
+        month = input("Which month would you like to check? (Month Number!) ")
+
+        if year.isdigit() and month.isdigit():
+            month_data = sales_in_month(sale_data, year, month)
+
+            # Print human friendly message for "No sales"
+            if len(month_data) == 0:
+                print(f"There are no recorded sales in {year}-{month}.")
+
+            else:
+                print(f"Here's a list of sales made in {year}-{month}:")
+
+                for entry in month_data:
+                    salesperson = entry['salesperson']
+                    car = f"{entry['make']} {entry['model']}"
+                    price = f"${entry['price']:.2f}"
+
+                    print(f"{salesperson} sold a {car} for {price}.")
+        else:
+            print("\n!! One or more input is incorrect, please try again !!")
+
     # Don't continue until the user is ready
     input("\n[Press enter to continue]")
