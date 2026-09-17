@@ -36,7 +36,7 @@ def load_sales(filename: str) -> list:
     if not os.path.exists(filename):
         # Don't throw python errors at the user, handle errors safely.
         print('Sales data file path does not exist.')
-        return
+        return []
 
     with open(filename, 'r') as file:
         lines       = file.readlines()
