@@ -65,7 +65,7 @@ def grab_analytics(run_option: str) -> None:
     way, which requires printing differently per interaction.
 
     :param run_option: which sales data to read.
-    :return:
+    :return: Nothing.
     """
     sale_data = load_sales(WORKING_DATA_FILE)
 
