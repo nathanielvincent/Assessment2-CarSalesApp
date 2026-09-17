@@ -90,48 +90,11 @@ def sales_by_salesperson(sales: list) -> dict:
     return sales_person_stats
 
 
-def most_sold_make(sales: list) -> str:
+def build_car_sales_stats_dict(sales: list) -> dict:
     """
-    Fetches and returns the most sold car make.
 
     :param sales: List data gathered from `load_sales`.
-    :return: The most sold car make.
-    """
-
-    car_sales_stats = {}
-    for sale in sales:
-        # Check to ensure no malformed entries before adding to list.
-        if validate_sale(sale):
-            try:
-                car_make = sale['make']
-
-                # Add salesperson to dictionary if they don't exist
-                if car_make not in car_sales_stats:
-                    car_sales_stats[car_make] = 1
-                    continue
-
-                car_sales_stats[car_make] += 1
-
-            except:  # Malformed entry, ignore, move on.
-                continue
-
-    most_sold_make_count = 0
-    best_sold_make       = ""
-    for make in car_sales_stats:
-        # Check if car make sales is more than already stored most sold count
-        if car_sales_stats[make] > most_sold_make_count:
-            most_sold_make_count = car_sales_stats[make]
-            best_sold_make = make
-
-    return best_sold_make
-
-
-def least_sold_model(sales: list) -> str:
-    """
-    Fetches and returns the least sold car make and model.
-
-    :param sales: List data gathered from `load_sales`.
-    :return: The least sold car make and model.
+    :return:
     """
 
     car_sales_stats = {}
@@ -150,6 +113,39 @@ def least_sold_model(sales: list) -> str:
 
             except:  # Malformed entry, ignore, move on.
                 continue
+
+    return car_sales_stats
+
+
+def most_sold_make(sales: list) -> str:
+    """
+    Fetches and returns the most sold car make.
+
+    :param sales: List data gathered from `load_sales`.
+    :return: The most sold car make.
+    """
+
+    car_sales_stats = build_car_sales_stats_dict(sales)
+
+    most_sold_make_count = 0
+    best_sold_make       = ""
+    for make in car_sales_stats:
+        # Check if car make sales is more than already stored most sold count
+        if car_sales_stats[make] > most_sold_make_count:
+            most_sold_make_count = car_sales_stats[make]
+            best_sold_make = make
+
+    return best_sold_make
+
+def least_sold_model(sales: list) -> str:
+    """
+    Fetches and returns the least sold car make and model.
+
+    :param sales: List data gathered from `load_sales`.
+    :return: The least sold car make and model.
+    """
+
+    car_sales_stats = build_car_sales_stats_dict(sales)
 
     # This is honeslty *garbage*. I'll rework it.
     lowest_sales        = 0
