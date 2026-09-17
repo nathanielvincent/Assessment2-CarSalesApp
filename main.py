@@ -66,9 +66,6 @@ def load_sales(filename: str) -> list:
 
         return car_sales
 
-def grab_analytics(run_option: str) -> None:
-    sale_data = load_sales('./car_sales.csv')
-
 def sales_interaction_menu() -> None:
     """
     Runs a menu of data analysis options until the user requests a quit.
