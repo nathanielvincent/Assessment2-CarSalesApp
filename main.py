@@ -9,7 +9,7 @@ def sales_interaction_menu() -> None:
     """
     Runs a menu of data analysis options until the user requests a quit.
 
-    :return:
+    :return: Nothing.
     """
 
     option_index_match = {}
