@@ -22,12 +22,14 @@ def write_report(sales: list, filename: str) -> None:
     top_salesperson_average     = top_salesperson_by_average(sales)
 
     with open(filename, 'w') as file:
+        # General Stats ---------------------------
         file.write(f'VEHICLE SALES STATS:\n')
         file.write(f'Total car sales in the dataset       - {total_sales_amount}\n')
         file.write(f'Total Revenue from all sales         - ${total_revenue_amount:.2f}\n\n')
         file.write(f'The overall most sold vehicle make   - {most_sold_car_make}.\n')
         file.write(f'The overall least sold vehicle model - {least_sold_car_model}.\n\n\n')
 
+        # Total sale count ---------------------------
         file.write(f'SALES PEOPLE STATS:\n')
         file.write(f'The top sales person based on average sales price is {top_salesperson_average}.\n\n\n')
 
@@ -37,6 +39,7 @@ def write_report(sales: list, filename: str) -> None:
         for name, value in sales_per_salesperson.items():
             file.write(f"{name:<10}{value:>10}\n")
 
+        # Average sale amount ---------------------------
         file.write('\n\n\nSales Person Average Sale Amount\n') # Put a small gap between tables
         file.write(f"{'Name':<10}{'Average Sale Amount':>15}\n")
         file.write('-' * 30 + '\n') # Add a gap
