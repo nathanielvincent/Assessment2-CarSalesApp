@@ -92,10 +92,15 @@ def sales_interaction_menu() -> None:
             option_index = option_index_match[selected_option]
             run_option = MENU_OPTIONS[option_index]
 
-            grab_analytics(run_option)
+            # Quit when the user asks.
+            if run_option == 'quit':
+                user_request_exit = True
+
+            else:
+                grab_analytics(run_option)
 
         else:
-            print("!! That is not a valid option, please try again !!")
+            print("\n\n!! That is not a valid option, please try again !!\n\n")
 
 
 if __name__ == '__main__':
