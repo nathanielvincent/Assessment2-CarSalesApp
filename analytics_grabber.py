@@ -77,7 +77,15 @@ def grab_analytics(run_option: str) -> None:
         print("Sales Person Sales Statistics!")
         for salesperson in sales_by_salesperson_data:
             sales_count = sales_by_salesperson_data[salesperson]
-            print(f"{salesperson} - {sales_count} sales!")
+            print(f"{salesperson} - {sales_count} sales.")
+
+    elif run_option == 'most_sold_make':
+        most_sold_make_data = most_sold_make(sale_data)
+        print(f"The most sold car make is {most_sold_make_data}.")
+
+    elif run_option == 'least_sold_model':
+        least_sold_model_data = least_sold_model(sale_data)
+        print(f"The least sold car make and model is {least_sold_model_data}.")
 
     # Don't continue until the user is ready
     input("\n[Press enter to continue]")
