@@ -64,8 +64,7 @@ if __name__ == '__main__':
     sales_count = total_sales(sale_data)
     revenue     = total_revenue(sale_data)
 
-    print(least_sold)
-
+    print(f"Least Sold Model: {least_sold}")
     print(f"Most Sold Make  : {most_sold}")
     print(f"Total Sales     : {sales_count}")
     print(f"Total Revenue   : {revenue}")
