@@ -79,7 +79,9 @@ def grab_analytics(run_option: str) -> None:
         print("Sales Person Sales Statistics!")
         for salesperson in sales_by_salesperson_data:
             sales_count = sales_by_salesperson_data[salesperson]
-            print(f"{salesperson} - {sales_count} sales.")
+            sales_count_string = f"{sales_count} sales"
+
+            print(f"{salesperson:<10} {sales_count_string:>10}")
 
 
     elif run_option == 'Most Sold Make':
@@ -96,7 +98,9 @@ def grab_analytics(run_option: str) -> None:
         average_sale_amount = average_sale_by_salesperson(sale_data)
         for salesperson in average_sale_amount:
             sales_average = average_sale_amount[salesperson]
-            print(f"{salesperson} - Average of ${sales_average:.2f} per sale.")
+            sales_average_price = f"${sales_average:.2f}"
+
+            print(f"{salesperson:<10} {sales_average_price:>10}")
 
 
     elif run_option == 'Top Salesperson by Average':
