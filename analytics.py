@@ -190,6 +190,6 @@ def top_salesperson_by_average(sales: list) -> str:
     # I'm too lazy to check the code against an empty list.
     # enjoy this dedicated check.
     if len(sales) == 0:
-        return {}
+        return "Nobody - Empty list provided!"
 
     sales_person_data = fetch_salesperson_data(sales)
