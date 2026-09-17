@@ -5,6 +5,16 @@
 import os
 from analytics import *
 
+# Options that will appear on startup for the interaction menu.
+MENU_OPTIONS = {
+    "Total Sales": "total_sales",
+    "Total Revenue": "total_revenue",
+    "Sales by Salesperson": "sales_by_salesperson",
+    "Most Sold Make": "most_sold_make",
+    "Least Sold Model": "least_sold_model",
+    "Quit": "quit"
+}
+
 def parse_value(value):
     """
     Parses the given value and will convert it to an int, float, or just return the normal value
@@ -56,30 +66,33 @@ def load_sales(filename: str) -> list:
 
         return car_sales
 
-def sales_interaction_menu() -> None:
+def grab_analytics() -> None:
     sale_data = load_sales('./car_sales.csv')
 
-    menu_options = {
-        "sales_count": [total_sales, sale_data],
-        "least_sold_model": [least_sold_model, sale_data]
-    }
-    option_index_match = {}
+def sales_interaction_menu() -> None:
+    """
+    Runs a menu of data analysis options until the user requests a quit.
 
-    selected_option = ""
-    while selected_option != 'quit':
-        for index, option in enumerate(menu_options, start=1):
+    :return:
+    """
+
+    option_index_match = {}
+    user_request_exit = False
+
+    while not user_request_exit:
+        # Dynamically print menu options based on the coded options.
+        for index, option in enumerate(MENU_OPTIONS, start=1):
             print(f"{index}. {option}")
             option_index_match[str(index)] = option
 
-        selected_option = input("\nWhich option would you like to view? (Use the numbers, type `quit` to quit.) ").lower().strip()
-        print(selected_option)
-        print(option_index_match)
-        if selected_option in option_index_match:
-            run_function = option_index_match[selected_option]
-            print(run_function)
-            data = menu_options[run_function][0][1]
+        selected_option = input("\nWhich option would you like to view? (Use the numbers!) ").lower().strip()
 
-            print(data)
+        # Fetch the menu option to run
+        if selected_option in option_index_match:
+            option_index = option_index_match[selected_option]
+            run_option = MENU_OPTIONS[option_index]
+
+            grab_analytics(run_option)
 
 
 if __name__ == '__main__':
