@@ -1,3 +1,7 @@
+# Nathaniel Vincent
+# nav0135@arastudent.ac.nz
+# Generates a report of all the information from `analytics.py` and saves it to a text file.
+
 from analytics import *
 from analytics_grabber import load_sales
 import uuid

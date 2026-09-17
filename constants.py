@@ -1,3 +1,8 @@
+# Nathaniel Vincent
+# nav0135@arastudent.ac.nz
+# Constant variables that multiple files depend on, so they're here instead
+# of being duplicated multiple times through the source.
+
 # Options that will appear on startup for the interaction menu in main.py.
 # This is also used for analytics_grabber.py to know what code to run.
 MENU_OPTIONS_LIST = [

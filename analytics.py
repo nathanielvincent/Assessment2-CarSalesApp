@@ -1,3 +1,7 @@
+# Nathaniel Vincent
+# nav0135@arastudent.ac.nz
+# Functions to fetch analytics from provided car sales stats
+
 def total_sales(sales: list) -> int:
     """
     Returns the total count of sales from the provided data.

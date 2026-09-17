@@ -1,3 +1,8 @@
+# Nathaniel Vincent
+# nav0135@arastudent.ac.nz
+# The primary handler for calling functions from `analytics.py` as is requested
+# by main.py for the terminal interface people interact with
+
 from analytics import *
 import os
 
