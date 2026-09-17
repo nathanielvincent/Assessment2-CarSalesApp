@@ -2,6 +2,20 @@
 # nav0135@arastudent.ac.nz
 # Functions to fetch analytics from provided car sales stats
 
+def validate_sale(sale: dict) -> bool:
+    """
+    Validates a sale entry, checks for any malformed entries and will return data accordingly
+
+    :param sale: One sale entry gathered from `load_sales`.
+    :return: Will return True if entry is okay, otherwise False.
+    """
+
+    for key in sale:
+        if not sale[key]:
+            return False
+
+    return True
+
 def total_sales(sales: list) -> int:
     """
     Returns the total count of sales from the provided data.
@@ -9,7 +23,14 @@ def total_sales(sales: list) -> int:
     :param sales: List data gathered from `load_sales`.
     :return: Integer count of sales.
     """
-    return len(sales)
+
+    total_sale_count = 0
+    for sale in sales:
+        # Check to ensure no malformed entries before adding to list.
+        if validate_sale(sale):
+            total_sale_count += 1
+
+    return total_sale_count
 
 
 def total_revenue(sales: list) -> float:
@@ -21,13 +42,15 @@ def total_revenue(sales: list) -> float:
     """
 
     revenue_total = 0
-    for item in sales:
-        try:
-            price = item['price']
-            revenue_total += price
+    for sale in sales:
+        # Check to ensure no malformed entries before adding to list.
+        if validate_sale(sale):
+            try:
+                price = sale['price']
+                revenue_total += price
 
-        except: # Malformed entry, ignore, move on.
-            continue
+            except: # Malformed entry, ignore, move on.
+                continue
 
     return float(revenue_total)
 
@@ -42,18 +65,20 @@ def sales_by_salesperson(sales: list) -> dict:
 
     sales_person_stats = {}
     for sale in sales:
-        try:
-            sales_person = sale['salesperson']
+        # Check to ensure no malformed entries before adding to list.
+        if validate_sale(sale):
+            try:
+                sales_person = sale['salesperson']
 
-            # Add salesperson to dictionary if they don't exist
-            if sales_person not in sales_person_stats:
-                sales_person_stats[sales_person] = 1
+                # Add salesperson to dictionary if they don't exist
+                if sales_person not in sales_person_stats:
+                    sales_person_stats[sales_person] = 1
+                    continue
+
+                sales_person_stats[sales_person] += 1
+
+            except: # Malformed entry, ignore, move on.
                 continue
-
-            sales_person_stats[sales_person] += 1
-
-        except: # Malformed entry, ignore, move on.
-            continue
 
     return sales_person_stats
 
@@ -68,18 +93,20 @@ def most_sold_make(sales: list) -> str:
 
     car_sales_stats = {}
     for sale in sales:
-        try:
-            car_make = sale['make']
+        # Check to ensure no malformed entries before adding to list.
+        if validate_sale(sale):
+            try:
+                car_make = sale['make']
 
-            # Add salesperson to dictionary if they don't exist
-            if car_make not in car_sales_stats:
-                car_sales_stats[car_make] = 1
+                # Add salesperson to dictionary if they don't exist
+                if car_make not in car_sales_stats:
+                    car_sales_stats[car_make] = 1
+                    continue
+
+                car_sales_stats[car_make] += 1
+
+            except:  # Malformed entry, ignore, move on.
                 continue
-
-            car_sales_stats[car_make] += 1
-
-        except:  # Malformed entry, ignore, move on.
-            continue
 
     most_sold_make_count = 0
     best_sold_make       = ""
@@ -102,18 +129,20 @@ def least_sold_model(sales: list) -> str:
 
     car_sales_stats = {}
     for sale in sales:
-        try:
-            car_make_and_model = f"{sale['make']} {sale['model']}"
+        # Check to ensure no malformed entries before adding to list.
+        if validate_sale(sale):
+            try:
+                car_make_and_model = f"{sale['make']} {sale['model']}"
 
-            # Add salesperson to dictionary if they don't exist
-            if car_make_and_model not in car_sales_stats:
-                car_sales_stats[car_make_and_model] = 1
+                # Add salesperson to dictionary if they don't exist
+                if car_make_and_model not in car_sales_stats:
+                    car_sales_stats[car_make_and_model] = 1
+                    continue
+
+                car_sales_stats[car_make_and_model] += 1
+
+            except:  # Malformed entry, ignore, move on.
                 continue
-
-            car_sales_stats[car_make_and_model] += 1
-
-        except:  # Malformed entry, ignore, move on.
-            continue
 
     # This is honeslty *garbage*. I'll rework it.
     lowest_sales        = 0
@@ -144,17 +173,19 @@ def fetch_salesperson_data(sales: list) -> dict:
 
     sales_person_data = {}
     for sale in sales:
-        salesperson = sale['salesperson']
-        sale_value = sale['price']
+        # Check to ensure no malformed entries before adding to list.
+        if validate_sale(sale):
+            salesperson = sale['salesperson']
+            sale_value = sale['price']
 
-        # Add the sales person to the dictionary if they're not in it already.
-        if salesperson not in sales_person_data:
-            sales_person_data[salesperson] = {'total_sale_value': sale_value, 'total_sale_count': 1}
-            continue
+            # Add the sales person to the dictionary if they're not in it already.
+            if salesperson not in sales_person_data:
+                sales_person_data[salesperson] = {'total_sale_value': sale_value, 'total_sale_count': 1}
+                continue
 
-        # Add the data to the sales persons stats if they're already in the dictionary.
-        sales_person_data[salesperson]['total_sale_count'] += 1
-        sales_person_data[salesperson]['total_sale_value'] += sale_value
+            # Add the data to the sales persons stats if they're already in the dictionary.
+            sales_person_data[salesperson]['total_sale_count'] += 1
+            sales_person_data[salesperson]['total_sale_value'] += sale_value
 
     return sales_person_data
 
@@ -246,7 +277,9 @@ def sales_in_month(sales: list, year: int | str, month: int | str) -> list:
     sales_made  = []
 
     for sale in sales:
-        if sales_date in sale['date']:
-            sales_made.append(sale)
+        # Check to ensure no malformed entries before adding to list.
+        if validate_sale(sale):
+            if sales_date in sale['date']:
+                sales_made.append(sale)
 
     return sales_made
