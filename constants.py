@@ -1,8 +1,8 @@
 # Nathaniel Vincent
 # nav0135@arastudent.ac.nz
-# Constant variables that multiple files depend on, so they're here instead
+# Constant variables and functions that multiple files depend on, so they're here instead
 # of being duplicated multiple times through the source.
-
+import os
 
 # This is the file that will be utilised by the code for all functions.
 # If you wish to change the file it reads, change this, and everything will use it.
@@ -23,3 +23,11 @@ MENU_OPTIONS_LIST = [
     "Best Month",
     "Quit",
 ]
+
+def clear_terminal():
+    """
+    Clears the terminal screen, for readability
+
+    :return: None.
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')

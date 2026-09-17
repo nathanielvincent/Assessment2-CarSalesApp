@@ -37,6 +37,7 @@ def sales_interaction_menu() -> None:
         else:
             # Get the users attention before going back to start of loop
             input("\n\n!! That is not a valid option, please try again. Press Enter to dismiss !!")
+            clear_terminal()
 
 
 if __name__ == '__main__':

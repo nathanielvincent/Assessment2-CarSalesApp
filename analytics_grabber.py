@@ -142,3 +142,4 @@ def grab_analytics(run_option: str) -> None:
 
     # Don't continue until the user is ready
     input("\n[Press enter to continue]")
+    clear_terminal()
