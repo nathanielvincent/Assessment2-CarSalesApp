@@ -151,6 +151,27 @@ def fetch_salesperson_data(sales: list) -> dict:
 
     return sales_person_data
 
+def average_salesperson_data(sales_person_data: dict) -> dict:
+    """
+    Generates the average of every salespersons sales as is gathered from `fetch_salesperson_data`.
+
+    :param sales_person_data: List data gathered from `fetch_salesperson_data`.
+    :return: A dictionary of sales people names and their averaged sales values.
+    """
+
+    # Generate the average sales count for every sales person and add it to a dictionary
+    averaged_sales_person_data = {}
+    for sales_person in sales_person_data:
+        sales_person_name        = sales_person
+        sales_person_total_value = sales_person_data[sales_person]['total_sale_value']
+        sales_person_total_sales = sales_person_data[sales_person]['total_sale_count']
+
+        average_value = round(sales_person_total_value / sales_person_total_sales, 2)
+
+        averaged_sales_person_data[sales_person_name] = average_value
+
+    return averaged_sales_person_data
+
 def average_sale_by_salesperson(sales: list) -> dict:
     """
     Fetches the average sale amount of every salesperson in the provided data.
@@ -165,17 +186,7 @@ def average_sale_by_salesperson(sales: list) -> dict:
         return {}
 
     sales_person_data = fetch_salesperson_data(sales)
-    averaged_sales_person_data = {}
-
-    # Generate the average sales count for every sales person and add it to a dictionary
-    for sales_person in sales_person_data:
-        sales_person_name        = sales_person
-        sales_person_total_value = sales_person_data[sales_person]['total_sale_value']
-        sales_person_total_sales = sales_person_data[sales_person]['total_sale_count']
-
-        average_value = round(sales_person_total_value / sales_person_total_sales, 2)
-
-        averaged_sales_person_data[sales_person_name] = average_value
+    averaged_sales_person_data = average_salesperson_data(sales_person_data)
 
     return averaged_sales_person_data
 
@@ -193,3 +204,14 @@ def top_salesperson_by_average(sales: list) -> str:
         return "Nobody - Empty list provided!"
 
     sales_person_data = fetch_salesperson_data(sales)
+    averaged_sales_person_data = average_salesperson_data(sales_person_data)
+
+    top_salesperson = ""
+    top_salesperson_amount = 0
+
+    for sales_person in averaged_sales_person_data:
+        if averaged_sales_person_data[sales_person] > top_salesperson_amount:
+            top_salesperson = sales_person
+            top_salesperson_amount = averaged_sales_person_data[sales_person]
+
+    return top_salesperson
