@@ -4,6 +4,7 @@
 
 import os
 from analytics import *
+from analytics_grabber import grab_analytics
 
 # Options that will appear on startup for the interaction menu.
 MENU_OPTIONS = {
