@@ -17,7 +17,7 @@ def sales_interaction_menu() -> None:
 
     while not user_request_exit:
         # Dynamically print menu options based on the coded options.
-        for index, option in enumerate(MENU_OPTIONS, start=1):
+        for index, option in enumerate(MENU_OPTIONS_LIST, start=1):
             print(f"{index}. {option}")
             option_index_match[str(index)] = option
 
@@ -25,11 +25,10 @@ def sales_interaction_menu() -> None:
 
         # Fetch the menu option to run
         if selected_option in option_index_match:
-            option_index = option_index_match[selected_option]
-            run_option = MENU_OPTIONS[option_index]
+            run_option = option_index_match[selected_option]
 
             # Quit when the user asks.
-            if run_option == 'quit':
+            if run_option == 'Quit':
                 user_request_exit = True
 
             else:

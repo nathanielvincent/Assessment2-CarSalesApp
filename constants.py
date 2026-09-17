@@ -1,17 +1,5 @@
-# Options that will appear on startup for the interaction menu.
-MENU_OPTIONS = {
-    "Total Sales": "total_sales",
-    "Total Revenue": "total_revenue",
-    "Sales by Salesperson": "sales_by_salesperson",
-    "Most Sold Make": "most_sold_make",
-    "Least Sold Model": "least_sold_model",
-    "Average Sale by Salesperson": "average_sale_by_salesperson",
-    "Top Salesperson by Average": "top_salesperson_by_average",
-    "Sales in Month": "sales_in_month",
-    "Best Month": "best_month",
-    "Quit": "quit"
-}
-
+# Options that will appear on startup for the interaction menu in main.py.
+# This is also used for analytics_grabber.py to know what code to run.
 MENU_OPTIONS_LIST = [
     "Total Sales",
     "Total Revenue",
