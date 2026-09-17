@@ -45,7 +45,7 @@ def sales_interaction_menu() -> None:
                 grab_analytics(run_option)
 
         else:
-            print("\n\n!! That is not a valid option, please try again !!\n\n")
+            input("\n\n!! That is not a valid option, please try again. Press Enter to dismiss !!")
 
 
 if __name__ == '__main__':
