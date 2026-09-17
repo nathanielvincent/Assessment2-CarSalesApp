@@ -77,6 +77,39 @@ def sales_by_salesperson(sales: list) -> dict:
 
     return sales_person_stats
 
+def most_sold_make(sales: list) -> str:
+    """
+
+    :param sales: List data gathered from `load_sales`.
+    :return:
+    """
+
+    car_sales_stats = {}
+    for sale in sales:
+        try:
+            car_make = sale['make']
+
+            # Add salesperson to dictionary if they don't exist
+            if car_make not in car_sales_stats:
+                car_sales_stats[car_make] = 1
+                continue
+
+            car_sales_stats[car_make] += 1
+
+        except: # Malformed entry, ignore, move on.
+            continue
+
+    most_sold_make_count = 0
+    best_sold_make       = ""
+    for make in car_sales_stats:
+        # Check if car make sales is more than already stored most sold count
+        if car_sales_stats[make] > most_sold_make_count:
+            most_sold_make_count = car_sales_stats[make]
+            best_sold_make = make
+
+    return best_sold_make
+
+
 # LOADING DATA --------------------------------------------------------
 def load_sales(filename: str) -> list:
     """
@@ -114,7 +147,7 @@ def load_sales(filename: str) -> list:
 
 if __name__ == '__main__':
     sale_data = load_sales('./car_sales.csv')
-    sales_by_salesperson(sale_data)
+    most_sold_make(sale_data)
 
     sales_count = total_sales(sale_data)
     revenue = total_revenue(sale_data)
