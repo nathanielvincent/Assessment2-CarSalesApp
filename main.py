@@ -4,6 +4,7 @@
 
 from analytics_grabber import grab_analytics
 from constants import *
+from global_functions import *
 
 def sales_interaction_menu() -> None:
     """
@@ -12,7 +13,7 @@ def sales_interaction_menu() -> None:
     :return: Nothing.
     """
     clear_terminal() # Clear the starting call line so it reads nicer.
-    
+
     option_index_match = {}
     user_request_exit = False
 

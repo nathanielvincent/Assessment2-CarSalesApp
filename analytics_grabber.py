@@ -5,6 +5,7 @@
 
 from analytics import *
 from constants import *
+from global_functions import *
 
 def parse_value(value):
     """

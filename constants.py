@@ -3,7 +3,6 @@
 # Constant variables and functions that multiple files depend on, so they're here instead
 # of being duplicated multiple times through the source.
 
-import os
 from pathlib import Path
 
 # This is the file that will be utilised by the code for all functions.
@@ -25,11 +24,3 @@ MENU_OPTIONS_LIST = [
     "Best Month",
     "Quit",
 ]
-
-def clear_terminal():
-    """
-    Clears the terminal screen, for readability
-
-    :return: None.
-    """
-    os.system('cls' if os.name == 'nt' else 'clear')
