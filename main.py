@@ -66,7 +66,7 @@ def load_sales(filename: str) -> list:
 
         return car_sales
 
-def grab_analytics() -> None:
+def grab_analytics(run_option: str) -> None:
     sale_data = load_sales('./car_sales.csv')
 
 def sales_interaction_menu() -> None:
@@ -93,6 +93,9 @@ def sales_interaction_menu() -> None:
             run_option = MENU_OPTIONS[option_index]
 
             grab_analytics(run_option)
+
+        else:
+            print("!! That is not a valid option, please try again !!")
 
 
 if __name__ == '__main__':
