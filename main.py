@@ -36,6 +36,7 @@ def sales_interaction_menu() -> None:
                 grab_analytics(run_option)
 
         else:
+            # Get the users attention before going back to start of loop
             input("\n\n!! That is not a valid option, please try again. Press Enter to dismiss !!")
 
 
