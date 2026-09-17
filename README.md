@@ -8,3 +8,4 @@
 ## How To Run Test Cases:
 
 ## How Manual Testing Was Done:
+Manual testing was completed as development went on, for example manually testing each and every individual item in the terminal user interface to ensure they all work correctly and as expected.
