@@ -315,13 +315,15 @@ def best_month(sales: list) -> str:
             split_date = sale['date'].split('-')
             date_string = f"{split_date[0]}-{split_date[1]}"
 
-            # Add year-month string to dict if it doesn't exist
-            if date_string not in date_profits:
-                date_profits[date_string] = sale['price']
-                continue
+            # Don't run on anything
+            if type(sale['price']) == int or type(sale['price']) == float:
+                # Add year-month string to dict if it doesn't exist
+                if date_string not in date_profits:
+                    date_profits[date_string] = sale['price']
+                    continue
 
-            # Add sale price to the tally if the year-month string already in dict.
-            date_profits[date_string] += sale['price']
+                # Add sale price to the tally if the year-month string already in dict.
+                date_profits[date_string] += sale['price']
 
     most_profitable_month           = ""
     most_profitable_month_amount    = 0
