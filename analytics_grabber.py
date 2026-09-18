@@ -131,6 +131,7 @@ def grab_analytics(run_option: str, csv_file_path: str) -> None:
                 print(f"Here's a list of sales made in {year}-{month}:")
                 print(f"{'Salesperson':<15}{'Model':<25}{'Price':>10}")
 
+                # Print a nice table for people to read.
                 for entry in month_data:
                     salesperson = entry['salesperson']
                     car = f"{entry['make']} {entry['model']}"
