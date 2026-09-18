@@ -52,7 +52,6 @@ def load_sales(filename: str) -> list:
 
             for i in range(len(csv_keys)):
                 # Convert the data into integers if possible.
-                # TODO: Error handling when malformed data
                 entry_data = parse_value(split_sales_data[i])
 
                 car_sales_cache_dict[csv_keys[i]] = entry_data # Add the data to the cache dictionary
