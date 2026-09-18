@@ -1,3 +1,8 @@
+# Nathaniel Vincent
+# nav0135@arastudent.ac.nz
+# A file with functions that multiple different sources need,
+# to prevent duplication of the same function multiple times.
+
 import os
 
 def clear_terminal():
