@@ -8,7 +8,7 @@ from global_functions import *
 
 import os
 
-def _find_csv_files(directory: Path) -> dict:
+def _find_csv_files(directory: str) -> dict:
     """
     Finds all the .csv files in the given directory, including subdirectories.
 
