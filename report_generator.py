@@ -59,12 +59,7 @@ def write_report(sales: list, filename: str) -> None:
 
 if __name__ == "__main__":
     # Custom ID for every report, don't overwrite old ones.
-    report_path_folder = WORKING_DIR / 'reports'
-    report_path = report_path_folder / f"{uuid.uuid4()}.txt"
-
-    if not os.path.exists(report_path_folder):
-        os.makedirs(report_path_folder, exist_ok=True)
-
-    sale_data = load_sales(WORKING_DATA_FILE)
+    report_path = f"./report_{uuid.uuid4()}.txt"
+    sale_data = load_sales(report_path)
 
     write_report(sale_data, report_path)
