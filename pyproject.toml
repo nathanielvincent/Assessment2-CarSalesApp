@@ -1,7 +1,7 @@
 [project]
-name = "assessment2-carsalesapp"
+name = "Car Sales Analysis App"
 version = "0.1.0"
-description = "Add your description here"
+description = "An app developed for BCDE101 Assessment 2."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
