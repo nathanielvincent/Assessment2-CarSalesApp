@@ -13,7 +13,7 @@ def write_report(sales: list, filename: str) -> None:
 
     :param sales: List data gathered from `load_sales`.
     :param filename: The output path to save the report to.
-    :return: Nothing.
+    :return: None.
     """
 
     total_sales_amount      = total_sales(sales)

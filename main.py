@@ -31,7 +31,7 @@ def handle_file_picking() -> str:
     Handles choosing which CSV file the code should use.
     Asks the user for their input if more than one are detected.
 
-    :return:
+    :return: None.
     """
 
     csv_files = _find_csv_files('./')
@@ -68,9 +68,9 @@ def handle_file_picking() -> str:
 
 def sales_interaction_menu() -> None:
     """
-    Runs a menu of data analysis options until the user requests a quit.
+    Displays a menu of data analysis options until the user requests a quit.
 
-    :return: Nothing.
+    :return: None.
     """
 
     option_index_match = {}
