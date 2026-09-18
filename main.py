@@ -34,7 +34,7 @@ def handle_file_picking() -> str:
     :return:
     """
 
-    csv_files = _find_csv_files(WORKING_DIR)
+    csv_files = _find_csv_files('./')
     if len(csv_files) == 0:
         print("!! No CSV files in working directory !!")
         return ""
