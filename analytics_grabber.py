@@ -65,10 +65,10 @@ def grab_analytics(run_option: str, csv_file_path: str) -> None:
     way, which requires printing differently per interaction.
 
     :param run_option: Which sales data to read.
-    :param csv_file_path: The path to the csv file to read data from.
+    :param csv_file_path: The file to read data from.
     :return: None.
     """
-    sale_data = load_sales(WORKING_DATA_FILE)
+    sale_data = load_sales(csv_file_path)
 
     if run_option == 'Total Sales':
         total_sale_count = total_sales(sale_data)
