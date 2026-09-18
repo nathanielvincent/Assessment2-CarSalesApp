@@ -4,6 +4,7 @@
 # to prevent duplication of the same function multiple times.
 
 import os
+import subprocess
 
 def clear_terminal():
     """
@@ -11,5 +12,6 @@ def clear_terminal():
 
     :return: None.
     """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    command = 'cls' if os.name == 'nt' else 'clear' # Windows is a special baby and needs a special command.
+    subprocess.run(command)
 
