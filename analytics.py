@@ -190,17 +190,19 @@ def fetch_salesperson_data(sales: list) -> dict:
     for sale in sales:
         # Check to ensure no malformed entries before adding to list.
         if validate_sale(sale):
-            salesperson = sale['salesperson']
-            sale_value = sale['price']
+            # Don't run on anything that isn't a valid type
+            if type(sale['price']) == int or type(sale['price']) == float:
+                salesperson = sale['salesperson']
+                sale_value = sale['price']
 
-            # Add the sales person to the dictionary if they're not in it already.
-            if salesperson not in sales_person_data:
-                sales_person_data[salesperson] = {'total_sale_value': sale_value, 'total_sale_count': 1}
-                continue
+                # Add the sales person to the dictionary if they're not in it already.
+                if salesperson not in sales_person_data:
+                    sales_person_data[salesperson] = {'total_sale_value': sale_value, 'total_sale_count': 1}
+                    continue
 
-            # Add the data to the sales persons stats if they're already in the dictionary.
-            sales_person_data[salesperson]['total_sale_count'] += 1
-            sales_person_data[salesperson]['total_sale_value'] += sale_value
+                # Add the data to the sales persons stats if they're already in the dictionary.
+                sales_person_data[salesperson]['total_sale_count'] += 1
+                sales_person_data[salesperson]['total_sale_value'] += sale_value
 
     return sales_person_data
 
@@ -315,7 +317,7 @@ def best_month(sales: list) -> str:
             split_date = sale['date'].split('-')
             date_string = f"{split_date[0]}-{split_date[1]}"
 
-            # Don't run on anything
+            # Don't run on anything that isn't a valid type
             if type(sale['price']) == int or type(sale['price']) == float:
                 # Add year-month string to dict if it doesn't exist
                 if date_string not in date_profits:
