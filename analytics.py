@@ -10,8 +10,17 @@ def validate_sale(sale: dict) -> bool:
     :return: Will return True if entry is okay, otherwise False.
     """
 
-    # Check for missing keys
     check_keys = ['sale_id', 'date', 'salesperson', 'make', 'model', 'year', 'price']
+
+    # Check for too few, or too many keys
+    key_count = 0
+    for _ in sale:
+        key_count += 1
+
+    if key_count != len(check_keys):
+        return False
+
+    # Check for missing keys
     for key in check_keys:
         if key not in sale:
             return False
