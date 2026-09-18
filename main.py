@@ -77,6 +77,9 @@ def sales_interaction_menu() -> None:
     user_request_exit = False
 
     selected_file = handle_file_picking()
+    if len(selected_file) == 0:
+        return
+
     clear_terminal()  # Clear the starting call line so it reads nicer.
 
     while not user_request_exit:
