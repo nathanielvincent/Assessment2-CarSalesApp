@@ -46,6 +46,10 @@ def load_sales(filename: str) -> list:
             car_sales_cache_dict = {} # Set the cache dict here so it gets reset with every run of the loop.
             split_sales_data     = line.strip().split(",") # Split the keys from the line.
 
+            # Ensure the length of the entries matches the key count.
+            if len(split_sales_data) != len(csv_keys):
+                continue
+
             for i in range(len(csv_keys)):
                 # Convert the data into integers if possible.
                 # TODO: Error handling when malformed data
