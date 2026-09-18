@@ -5,9 +5,6 @@
 from analytics import *
 from analytics_grabber import load_sales
 
-from constants import *
-import os
-
 import uuid
 
 def write_report(sales: list, filename: str) -> None:
@@ -29,11 +26,14 @@ def write_report(sales: list, filename: str) -> None:
     average_salesperson_sales   = average_sale_by_salesperson(sales)
     top_salesperson_average     = top_salesperson_by_average(sales)
 
+    best_month_data = best_month(sales)
+
     with open(filename, 'w') as file:
         # General Stats ---------------------------
         file.write(f'VEHICLE SALES STATS:\n')
         file.write(f'Total car sales in the dataset       - {total_sales_amount}\n')
-        file.write(f'Total Revenue from all sales         - ${total_revenue_amount:.2f}\n\n')
+        file.write(f'Total revenue from all sales         - ${total_revenue_amount:.2f}\n')
+        file.write(f'The best month in the data           - {best_month_data}\n\n')
         file.write(f'The overall most sold vehicle make   - {most_sold_car_make}.\n')
         file.write(f'The overall least sold vehicle model - {least_sold_car_model}.\n\n\n')
 
@@ -59,12 +59,7 @@ def write_report(sales: list, filename: str) -> None:
 
 if __name__ == "__main__":
     # Custom ID for every report, don't overwrite old ones.
-    report_path_folder = WORKING_DIR / 'reports'
-    report_path = report_path_folder / f"{uuid.uuid4()}.txt"
-
-    if not os.path.exists(report_path_folder):
-        os.makedirs(report_path_folder, exist_ok=True)
-
-    sale_data = load_sales(WORKING_DATA_FILE)
+    report_path = f"./report_{uuid.uuid4()}.txt"
+    sale_data = load_sales('./data/car_sales.csv')
 
     write_report(sale_data, report_path)

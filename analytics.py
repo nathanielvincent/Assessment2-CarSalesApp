@@ -295,7 +295,7 @@ def best_month(sales: list) -> str:
     This function will scan all of the provided sales, and find the best performing month within them.
 
     :param sales: List data gathered from `load_sales`.
-    :return: A list, ['YYYY', 'MM']. e.g. ['2026', '05'].
+    :return: A string of the year and date, YYYY-MM.
     """
 
     date_profits = {}

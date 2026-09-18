@@ -58,16 +58,17 @@ def load_sales(filename: str) -> list:
 
         return car_sales
 
-def grab_analytics(run_option: str) -> None:
+def grab_analytics(run_option: str, csv_file_path: str) -> None:
     """
     This is the brains of the interaction menu, where all data is fetched,
     and printed. It is done this way so all data can be printed in a human-readable
     way, which requires printing differently per interaction.
 
-    :param run_option: which sales data to read.
-    :return: Nothing.
+    :param run_option: Which sales data to read.
+    :param csv_file_path: The file to read data from.
+    :return: None.
     """
-    sale_data = load_sales(WORKING_DATA_FILE)
+    sale_data = load_sales(csv_file_path)
 
     if run_option == 'Total Sales':
         total_sale_count = total_sales(sale_data)
