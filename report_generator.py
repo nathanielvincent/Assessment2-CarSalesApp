@@ -5,9 +5,6 @@
 from analytics import *
 from analytics_grabber import load_sales
 
-from constants import *
-import os
-
 import uuid
 
 def write_report(sales: list, filename: str) -> None:
