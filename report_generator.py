@@ -32,10 +32,10 @@ def write_report(sales: list, filename: str) -> None:
         # General Stats ---------------------------
         file.write(f'VEHICLE SALES STATS:\n')
         file.write(f'Total car sales in the dataset       - {total_sales_amount}\n')
-        file.write(f'Total revenue from all sales         - ${total_revenue_amount:.2f}\n\n')
+        file.write(f'Total revenue from all sales         - ${total_revenue_amount:.2f}\n')
+        file.write(f'The best month in the data           - {best_month_data}\n\n')
         file.write(f'The overall most sold vehicle make   - {most_sold_car_make}.\n')
-        file.write(f'The overall least sold vehicle model - {least_sold_car_model}.\n')
-        file.write(f'The best month in the data           - {best_month_data}\n\n\n')
+        file.write(f'The overall least sold vehicle model - {least_sold_car_model}.\n\n\n')
 
         # Total sale count ---------------------------
         file.write(f'SALES PEOPLE STATS:\n')
