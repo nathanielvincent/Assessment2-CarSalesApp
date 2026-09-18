@@ -60,6 +60,6 @@ def write_report(sales: list, filename: str) -> None:
 if __name__ == "__main__":
     # Custom ID for every report, don't overwrite old ones.
     report_path = f"./report_{uuid.uuid4()}.txt"
-    sale_data = load_sales(report_path)
+    sale_data = load_sales('./data/car_sales.csv')
 
     write_report(sale_data, report_path)
