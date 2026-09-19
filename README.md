@@ -28,7 +28,7 @@ for example manually testing each and every individual item in the terminal user
 to ensure they all work correctly and as expected.
 
 **⚠️This testing below was done on the `test_set_small.csv` file provided by me in this repository** so I can validate the outputs are correct.
-For reproducability, whewn the program prompts you to pick a dataset to read from, select `test_set_small.csv`.
+For reproducability, when the program prompts you to pick a dataset to read from, select `test_set_small.csv`.
 
 | Command Line Menu Input | Expected Result                                                            | Actual Result                                                              | Worked First Try? |
 |-------------------------|----------------------------------------------------------------------------|----------------------------------------------------------------------------|-------------------|
