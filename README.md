@@ -25,7 +25,7 @@ to ensure they all work correctly and as expected.
 **⚠️This testing below was done on the `test_set_small.csv` file provided by me in this repository** so outputs validity can be checked.
 For reproducability, when the program prompts you to pick a dataset to read from, select `test_set_small.csv`.
 
-**⚠ Some shown data does not precisely match the terminal output**, it displays the same data that the terminal outputs, 
+**⚠️Some shown data does not precisely match the terminal output**, it displays the same data that the terminal outputs, 
 but in a different format better suited for a markdown table.
 
 | Command Line Menu Input | Expected Result                                                            | Actual Result                                                              | Worked First Try? |
