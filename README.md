@@ -4,14 +4,14 @@
 2. Download and install Python.
 3. **If you are proving your own custom data**, place your `.csv` file in the same working directory as `main.py`, or ideally within `./data`.
 The program will automatically detect your `.csv` file and ask you which file to use when you start the program. 
-4. Create a Virtual Environment (venv) and make sure you enable it for your workspace.
-5. In the same working directory as `main.py`, run the two following commands;
-   - `pip install -r requirements.txt`
-   - `python main.py` (Possibly `python3 main.py`, depending on your installation!)
+4. In the same working directory as `main.py`, 
+   - Create a Virtual Environment (venv) and make sure you enable it for your workspace.
+   - Run the command; `pip install -r requirements.txt`
+   - Run the command; `python main.py` (Possibly `python3 main.py`, depending on your installation!)
 
 ## How To Run Test Cases:
 Automated testing can be completed by following these steps;
-1. Complete all the steps from `How To Run The Program` above **up to, and including** `pip_install -r requirements.txt`.
+1. Complete all the steps from `How To Run The Program` above **up to, and including** `pip install -r requirements.txt`.
 2. In the same working directory as `automated_tests.py`, run `pytest automated_tests.py`
 
 The output of this should contain a big green line at the bottom and say that the tests passed. 
